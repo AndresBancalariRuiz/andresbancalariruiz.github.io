@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrés Bancalari-Ruiz Portfolio</title>
+<meta name="description" content="Projects portfolio of Andrés Bancalari-Ruiz, MEng Robotics, Autonomous and Interactive Systems at Heriot-Watt University.">
+<meta property="og:title" content="Andrés Bancalari-Ruiz, projects portfolio">
+<meta property="og:description" content="Robotic arm, microdrone, Smart.Power.Bank and engineering projects at Heriot-Watt University.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f6a47'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23fafbf8' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23fafbf8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout: an engineering drawing set. Each project is a numbered sheet; inside it, every section pairs Andres's text with his figures, on drafting-grid paper. */
+  --paper: #eef1ec;
+  --sheet: #fafbf8;
+  --ink: #18211c;
+  --muted: #59655e;
+  --rule: #cbd4cd;
+  --accent: #1f6a47;
+  --grid-minor: rgba(31, 106, 71, 0.045);
+  --grid-major: rgba(31, 106, 71, 0.085);
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --step--1: 0.75rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.2rem;
+  --step-2: 1.625rem;
+  --step-3: clamp(1.9rem, 3.4vw, 2.5rem);
+  --step-4: clamp(2.2rem, 6.4vw, 4.9rem);
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --radius: 4px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.wrap { width: min(1180px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+/* Navigation */
+.nav { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; }
+.nav .who { font-family: var(--font-display); font-weight: 700; font-stretch: 112%; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(10px, 2.2vw, 26px); overflow-x: auto; scrollbar-width: none; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav ul a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 6px 0; display: inline-block; }
+.nav ul a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { padding-block: clamp(36px, 6vw, 80px) clamp(32px, 5vw, 64px); }
+.hero-grid { display: grid; gap: clamp(28px, 4vw, 56px); align-items: center; }
+@media (min-width: 920px) { .hero-grid { grid-template-columns: 1.2fr 1fr; } }
+.hero-grid > * { min-width: 0; }
+.name-block { display: inline-grid; margin-top: 14px; max-width: 100%; }
+.hero h1 { font-size: var(--step-4); font-weight: 760; font-stretch: 118%; letter-spacing: -0.015em; line-height: 0.98; }
+.dim {
+  position: relative; height: 18px; margin-top: 14px;
+  border-inline: 1px solid var(--ink);
+  display: flex; justify-content: center; align-items: center;
+}
+.dim::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 50%;
+  border-top: 1px solid var(--ink);
+  transform-origin: left center;
+  animation: draw 900ms cubic-bezier(.2,.7,.2,1) both;
+}
+.dim span { position: relative; background: var(--paper); padding: 0 10px; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; }
+@keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.intro h2 { font-size: var(--step-1); font-weight: 700; font-stretch: 108%; margin-top: 30px; }
+.intro p { margin-top: 10px; max-width: 60ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
+  padding: 10px 16px; border-radius: var(--radius);
+  background: var(--accent); color: var(--sheet); text-decoration: none; border: 1px solid var(--accent);
+}
+.btn:hover { background: var(--ink); border-color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--sheet); }
+
+.mosaic { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tile { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--sheet); }
+.tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
+.tile:hover img { transform: scale(1.03); }
+.tile span {
+  position: absolute; left: 8px; bottom: 8px;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+  background: var(--sheet); color: var(--ink); padding: 3px 8px; border: 1px solid var(--rule);
+}
+
+/* Sections and sheets */
+section { padding-block: clamp(24px, 4vw, 48px); }
+.section-head { margin-bottom: clamp(20px, 3vw, 32px); display: grid; gap: 8px; }
+.section-head h2 { font-size: var(--step-3); font-weight: 720; font-stretch: 112%; }
+
+.sheet {
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  outline: 1px solid var(--rule); outline-offset: -9px;
+  padding: clamp(22px, 3vw, 40px);
+}
+.sheet + .sheet { margin-top: clamp(24px, 3vw, 36px); }
+.sheet-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px;
+  padding-bottom: 16px; margin-bottom: 8px; border-bottom: 1px solid var(--ink);
+}
+.sheet-no { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.06em; }
+.sheet-head h3 { font-size: var(--step-2); font-weight: 700; font-stretch: 110%; flex: 1 1 280px; }
+
+.sub { display: grid; gap: clamp(18px, 3vw, 40px); padding-block: 24px; border-top: 1px solid var(--rule); }
+.sheet-head + .sub { border-top: 0; }
+.sub:last-child { padding-bottom: 0; }
+@media (min-width: 880px) { .sub { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
+.sub > * { min-width: 0; }
+.text { display: grid; gap: 12px; max-width: 62ch; align-content: start; }
+.text h4 { font-size: var(--step-1); font-weight: 700; font-stretch: 106%; color: var(--ink); }
+.text ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+
+.figs { display: grid; gap: 16px; align-content: start; }
+figure { margin: 0; }
+.fig-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+.frame { aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--rule); background: var(--paper); }
+.frame img { width: 100%; height: 100%; object-fit: cover; }
+.frame.tall { aspect-ratio: 3 / 4; }
+.frame.square { aspect-ratio: 1 / 1; }
+.frame.contain img { object-fit: contain; background: var(--sheet); }
+.frame.natural { aspect-ratio: auto; background: var(--sheet); }
+.frame.natural img { height: auto; }
+figcaption { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+
+.videos { display: flex; flex-wrap: wrap; gap: 10px; }
+.video {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); text-decoration: none;
+  border: 1px solid var(--ink); border-radius: var(--radius); padding: 7px 12px;
+}
+.video::before { content: ""; width: 0; height: 0; border-left: 8px solid var(--accent); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.video:hover { background: var(--ink); color: var(--sheet); }
+
+/* Final thoughts */
+.closing .text { max-width: 68ch; }
+@media (min-width: 880px) { .closing .sub { grid-template-columns: minmax(0, 1fr); } }
+
+footer { border-top: 1px solid var(--rule); padding-block: 22px 34px; margin-top: clamp(24px, 4vw, 48px); }
+.footer-row { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dim::before { animation: none; }
+  .tile img { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="who" href="#top">A. Bancalari-Ruiz</a>
+    <ul>
+      <li><a href="#robotic-arm">Robotic arm</a></li>
+      <li><a href="#microdrone">Microdrone</a></li>
+      <li><a href="#smart-power-bank">Smart.Power.Bank</a></li>
+      <li><a href="#heriot-watt">Heriot-Watt</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="label">Projects portfolio</p>
+      <div class="name-block">
+        <h1>Andrés Bancalari&#8209;Ruiz</h1>
+        <div class="dim" aria-hidden="true"><span>Heriot-Watt University</span></div>
+      </div>
+      <div class="intro">
+        <h2>Introduction</h2>
+        <p>I am an engineering enthusiast with a strong focus on designing and building mechanical and electronic systems. Currently, I am about to start my 5th year of the MEng Robotics, Autonomous, and Interactive Systems program at Heriot-Watt University. My expertise lies in 3D printing, CAD modelling, electronics, and programming with a passion for problem-solving and iterative design. This portfolio showcases my personal projects, highlighting the design challenges, solutions, and technical skills involved in each build.</p>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#robotic-arm">See the projects</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/andr%C3%A9s-bancalari-ruiz-695432310/" target="_blank" rel="noopener">LinkedIn profile</a>
+      </div>
+    </div>
+    <div class="mosaic">
+      <a class="tile" href="#robotic-arm"><img src="arm-first-2.jpg" alt="Assembled robotic arm joints with cycloidal gearboxes"><span>Robotic arm</span></a>
+      <a class="tile" href="#microdrone"><img src="drone-overview.jpg" alt="Hot swappable long range microdrone"><span>Microdrone</span></a>
+      <a class="tile" href="#smart-power-bank"><img src="spb-startup.jpg" alt="Smart.Power.Bank with its rotary knob and LED ring"><span>Smart.Power.Bank</span></a>
+      <a class="tile" href="#heriot-watt"><img src="positioner-tracking.jpg" alt="Satellite positioner prototype tracking the Artemis II mission"><span>Heriot-Watt projects</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="robotic-arm">
+  <div class="wrap">
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 01</span>
+        <h3>A Fully 3D-Printed Modular Cycloidal Drive Robotic Arm</h3>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Overview</h4>
+          <p>This robotic manipulator is a fully 3D-printed robotic arm that utilizes custom-built cycloidal gear drives for precision motion. The goal of this project was to create an affordable robotic manipulator to be driven by compact modular joints capable of generating high torque while also permitting back-drivability.</p>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame tall"><img src="arm-first-1.jpg" alt="First modular joints assembled"></div>
+            <div class="frame tall"><img src="arm-first-2.jpg" alt="Stacked modular joints of the robotic arm"></div>
+          </div>
+          <figcaption>First working iteration of joints assembled.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Gearbox design and first iterations</h4>
+          <p>The first gearbox iteration was designed to be compact and maintain a high reduction ratio (21:1) while having 2 separate cycloidal disks working at a 180° phase to minimize weight imbalances and maximize the disks’ contact area to ensure smooth motion without excessive backlash. I experimented with different tooth profiles and printing tolerances to optimize performance. Several iterations were tested, adjusting gear meshing and reducing friction losses. Once the tolerances were refined, the first modular joint was assembled.</p>
+          <div class="videos">
+            <a class="video" href="https://www.youtube.com/watch?v=pNB8NAiJt8U" target="_blank" rel="noopener">Video: First modular joint assembly</a>
+          </div>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame square"><img src="arm-progression-1.jpg" alt="Red 3D-printed cycloidal disks"></div>
+            <div class="frame square"><img src="arm-progression-2.jpg" alt="Early gearbox housing with cycloidal disk"></div>
+            <div class="frame square"><img src="arm-progression-3.jpg" alt="White joint with circular output flange"></div>
+            <div class="frame square"><img src="arm-progression-4.jpg" alt="Joint with blue bearing ring"></div>
+          </div>
+          <figcaption>Joint design progression.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <p>Later, the modular gearbox was redesigned to interconnect with other joints using aluminium 20x20 extrusions. The internal gearbox was upgraded to use a thicker single disk, as rotational imbalances are not an issue for this application and this would allow for the disk to be modelled with more teeth, while using the same drive shaft offset and disk diameter, enabling an improved 50:1 reduction per joint in a more compact form-factor with room to support the disk with bearings on either face.</p>
+        </div>
+        <figure class="figs">
+          <div class="frame natural"><img src="arm-gearbox-section.jpg" alt="Section view render of the redesigned gearbox"></div>
+          <figcaption>Section view of redesigned gearbox.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Issues with homing switches</h4>
+          <p>During the initial assembly, I faced challenges with the limit switches. They were prone to snapping if the joint rotated too far (as the code was still in the testing phase and the torque produced is very high). This led to unreliable homing procedures. Instead of using more expensive and complex sensors, the solution involved redesigning the switch mounting method by changing the incision angle at which the switch is triggered to protect it from getting damaged when the joint rotates too far.</p>
+          <p>Not only did it work more consistently, but it also allowed the joints to freely rotate with a 360° range-of-motion since the homing switches were not limiting their movement anymore. Additionally, this approach enables the joints to tally the number of rotations made in software.</p>
+          <div class="videos">
+            <a class="video" href="https://www.youtube.com/watch?v=3wX9BReUO_E" target="_blank" rel="noopener">Video: Homing switch improvement</a>
+          </div>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame tall"><img src="arm-homing-1.jpg" alt="Old homing switch mount"></div>
+            <div class="frame tall"><img src="arm-homing-2.jpg" alt="Joint with homing switch"></div>
+            <div class="frame tall"><img src="arm-homing-3.jpg" alt="New homing switch mounting method"></div>
+          </div>
+          <figcaption>Close-up view of the old homing system vs new method.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Controlling the stepper motors</h4>
+          <p>The robotic arm is powered by an Arduino Uno with a stepper motor shield commonly used for CNC machines. This shield allowed me to control all stepper motors individually and use an external power supply to power them, route the various sensors to the board, and implement an emergency kill switch. One of the challenges was achieving smooth acceleration patterns in software. For this, I had to implement micro-stepping and tune motor current settings.</p>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame"><img src="arm-electronics-1.jpg" alt="Arduino CNC stepper motor shield with drivers"></div>
+            <div class="frame"><img src="arm-electronics-2.jpg" alt="3D-printed electronics box parts"></div>
+            <div class="frame"><img src="arm-electronics-3.jpg" alt="Finished custom electronics box with fan and switch"></div>
+          </div>
+          <figcaption>Arduino UNO stepper shield and custom-made electronics box.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Mounting and redesign</h4>
+          <p>For supporting the arm, I made an unconventional table clamp design with the adjustment wheel integrated into the clamp’s body. As the project evolved, I realized that the initial design had structural weaknesses under load, as with all four gearboxes stacked on top it added considerable weight. This prompted a redesign to improve rigidity while maintaining printability. Making it into a corner-shaped clamp with additional bracing and stronger printing strategies helped mitigate flexing and warping of the part over time.</p>
+        </div>
+        <div class="figs">
+          <figure>
+            <div class="fig-row">
+              <div class="frame"><img src="arm-clamp-old-1.jpg" alt="Old white C-clamp design"></div>
+              <div class="frame"><img src="arm-clamp-old-2.jpg" alt="Old C-clamp showing warping"></div>
+            </div>
+            <figcaption>Old C-clamp design with visible warping after usage.</figcaption>
+          </figure>
+          <figure>
+            <div class="fig-row">
+              <div class="frame"><img src="arm-clamp-new-1.jpg" alt="New black corner clamp with aluminium extrusion"></div>
+              <div class="frame"><img src="arm-clamp-new-2.jpg" alt="New corner clamp with adjustment screw"></div>
+            </div>
+            <figcaption>Improved corner design with modular mounting holes.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="microdrone">
+  <div class="wrap">
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 02</span>
+        <h3>Hot Swappable Long Range Microdrone</h3>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Overview</h4>
+          <p>The goal of this project was to build a long range microdrone with significantly extended flight time by using hot-swappable high discharge rate lithium-ion cells. I aimed to achieve close to 20 minutes of flight per charge, far exceeding the typical 4-minute duration of commercial li-po battery powered microdrones. Additionally, the drone must comply with sub-250g regulations and use easily sourceable parts due to the current war shortage.</p>
+          <div class="videos">
+            <a class="video" href="https://www.youtube.com/watch?v=yKhvet2xIfk" target="_blank" rel="noopener">Video: Flight test</a>
+          </div>
+        </div>
+        <figure class="figs">
+          <div class="frame"><img src="drone-overview.jpg" alt="Microdrone with LEDs lit and a lithium-ion cell beside it"></div>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Electronics and Flight Controller Setup</h4>
+          <p>To meet the weight requirement, I tested multiple all-in-one flight controllers, frying one in the process, before selecting a board that integrated power distribution and ESCs while remaining compatible with the voltage range I needed. The drone used an ELRS receiver for low-latency radio control, and I configured the flight controller through Betaflight Configurator, tuning the receiver setup, motor outputs, flight modes, and basic safety settings.</p>
+          <p>I also attempted to integrate a GPS module to explore potential autonomous-flight features, including return-to-home functionality. Although this added complexity in terms of wiring, configuration, and weight management, it gave me valuable experience with FPV drone electronics, firmware configuration, and the trade-offs involved in compact UAV design.</p>
+        </div>
+        <div class="figs fig-row">
+          <figure>
+            <div class="frame"><img src="drone-flight-controller.jpg" alt="All-in-one flight controller and ELRS module"></div>
+            <figcaption>All-in-one flight controller + ELRS module.</figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="drone-cell-bracket.jpg" alt="Underside of the drone with the hot swappable cell bracket"></div>
+            <figcaption>Hot swappable cell underside bracket.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Testing and Flight Performance</h4>
+          <p>Once the drone was able to fly successfully indoors, I experimented with designing my own MIT-inspired propellers featuring a closed-loop blade profile. The aim was to reduce the high-pitched noise typically caused by conventional propeller tips, where airflow separation and tip vortices can create unwanted turbulence and acoustic noise. By removing the open blade tips, the design was intended to produce quieter and more stable flight.</p>
+          <p>In terms of performance, the drone’s agility was noticeably reduced, which was expected due to the additional load and lower efficiency of the 3D-printed propellers. The undersized brushless motors had to draw more current to maintain lift, causing them to overheat during testing. However, the flight was significantly quieter, with a lower-pitched hum that made the drone less noticeable from a distance.</p>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame"><img src="drone-props-1.jpg" alt="Drone with two-blade toroidal propellers"></div>
+            <div class="frame"><img src="drone-props-2.jpg" alt="Drone with three-blade toroidal propellers"></div>
+          </div>
+          <figcaption>Two and three blade toroidal propeller designs.</figcaption>
+        </figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="smart-power-bank">
+  <div class="wrap">
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 03</span>
+        <h3>Smart.Power.Bank</h3>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Project Overview</h4>
+          <p>The Smart.Power.Bank (SPB) is a compact retro-style ESP32-powered device that combines the functionality of a power bank with an interface capable of performing unlimited programmable tools. The user’s interaction is handled through a single rotary encoder, with feedback provided via a mini OLED display, a buzzer to play certain tones or haptic clicks, and an RGB ring light with every LED capable of being controlled individually.</p>
+          <p>On the software side of this project, the interface was designed to be intuitive with tactility and responsiveness in mind. For example, on each step of the encoder made, a subtle clicking-like haptic is produced with a corresponding RGB ring update, ensuring a satisfying user experience.</p>
+          <p>The applications on this device are cycled through by pressing on the knob. Some of the tools I implemented were:</p>
+          <ul>
+            <li>A simple torch tool where the brightness can be adjusted by rotating the wheel.</li>
+            <li>A timer where the time is set using the wheel, and a progress bar is displayed on the OLED until the buzzer alarm goes off.</li>
+            <li>Wireless control of desk lights with the encoder, on account of the ESP’s IoT capabilities.</li>
+          </ul>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame square"><img src="spb-startup.jpg" alt="Smart.Power.Bank during its startup sequence"></div>
+            <div class="frame square"><img src="spb-torch.jpg" alt="Smart.Power.Bank in torch control mode"></div>
+          </div>
+          <figcaption>Smart power bank on startup sequence and torch control mode.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="text">
+          <h4>Technical Achievements</h4>
+          <p>This project taught me the steps into developing a product from concept to prototype, from how to design a custom PCB on KiCad and send it to be manufactured abroad, to developing a real-time scheduled system using FreeRTOS for seamless integration between tasks.</p>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame tall"><img src="spb-dev-1.jpg" alt="Development prototype with LED ring and ESP32"></div>
+            <div class="frame tall"><img src="spb-dev-2.jpg" alt="Manufactured custom PCBs and a board under test"></div>
+            <div class="frame tall contain"><img src="spb-dev-3.jpg" alt="Inside of the enclosure with the cells fitted"></div>
+          </div>
+          <figcaption>Development stage snapshots and testing the manufactured PCB.</figcaption>
+        </figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="heriot-watt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Engineering Projects at Heriot-Watt</h2>
+    </div>
+
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 04</span>
+        <h3>Intelligent Satellite Positioner</h3>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <p>This university group project focused on the development of an intelligent antenna positioning system for Heriot-Watt University’s newly built satellite ground station. The ground station represented an investment of over £1.5 million and included several antenna plinths, with the fourth plinth requiring a new antenna positioning solution.</p>
+          <p>The motivation for the project came from the limitations of an existing commercial antenna positioning system, which had cost around £60,000 but was difficult and unintuitive to use. As an undergraduate engineering team, we were challenged to develop a lower-cost in-house alternative prototype that could be adapted to the university’s requirements.</p>
+        </div>
+        <figure class="figs">
+          <div class="frame"><img src="positioner-ground-station.jpg" alt="Heriot-Watt experimental ground station facility with antenna plinths"></div>
+          <figcaption>Heriot-Watt experimental ground station facility.</figcaption>
+        </figure>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <p>The intended full-scale system would be capable of retrieving TLE satellite data, using GPS positioning to determine its location, and using IMU readings to determine its tilt and automatically track satellites in real time from a moving object such as vehicles or UAVs. The system was also intended to support work being carried out by Infinect, a Heriot-Watt spin-off company developing phased array antenna technology. Since their antenna concept only required mechanical rotation in azimuth, our role was to develop a positioning system capable of accurately driving that rotational axis.</p>
+          <p>My main contribution was the mechanical design and development of a small-scale azimuth prototype. This proof-of-concept model was created to validate the mechanical layout, bearing arrangement, homing method, and motor-driven rotation before scaling the design into a larger metal version suitable for installation on the fourth plinth. Working at small scale also allowed us to test the system safely without needing to handle high-current motors, heavy moving structures, or the additional safety risks associated with the full-scale antenna platform. The main goal of the design was to isolate the forces applied (on a hypothetical larger scale) by the antenna dish and main structure from the driving motor to avoid losses in efficiency and durability.</p>
+        </div>
+        <div class="figs">
+          <figure>
+            <div class="frame"><img src="positioner-tracking.jpg" alt="Assembled positioner prototype next to a laptop running tracking software"></div>
+            <figcaption>Assembled system successfully tracking Artemis II mission at an exposition.</figcaption>
+          </figure>
+          <figure>
+            <div class="frame natural"><img src="positioner-section.jpg" alt="Labelled section view of the small-scale azimuth prototype with its components"></div>
+            <figcaption>Section view of the small-scale prototype with components assembled.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 05</span>
+        <h3>Dyson Inspired Bladeless Fan</h3>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <p>For this university assignment, I was required to develop a control system in C for an Arduino-based embedded system. Instead of only focusing on electronics, I decided to design and build a Dyson-inspired bladeless fan, combining mechanical design with a complete control system. The fan used a motor-driven impeller in the base to push air through a hollow loop, while the embedded system controlled fan speed, oscillation, and the user’s inputs. Using an ATmega328P microcontroller, I implemented PWM motor speed control, ADC input from a potentiometer, servo-controlled sweeping motion, push-button toggling, LED status indicators, UART messages, and a 16×2 LCD displaying the fan speed in real time. This project helped me understand how to implement low-level embedded C programming into one complete control system.</p>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame square contain"><img src="fan-1.jpg" alt="Exploded view model of the bladeless fan"></div>
+            <div class="frame square contain"><img src="fan-2.jpg" alt="Circuitry layout with Arduino, LCD and breadboard"></div>
+            <div class="frame square contain"><img src="fan-3.jpg" alt="Airflow drawing of the fan loop"></div>
+          </div>
+          <figcaption>Bladeless fan in exploded view model and circuitry layout.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 06</span>
+        <h3>University Group Projects</h3>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <p>I actively participated in engineering-focused group projects, managing the mechanical design, systems integration, and problem-solving in collaborative environments. My most notable contributions were as chief mechanical engineer for an autonomous waste disposal robot and a camera-guided launcher bot, where I led the design, prototyping, and testing of the mechanical systems while ensuring seamless integration with software and electronics.</p>
+        </div>
+        <div class="figs fig-row">
+          <figure>
+            <div class="frame"><img src="group-launcher-bot.jpg" alt="Launcher bot with a large gear and camera"></div>
+            <figcaption>Launcher bot with active camera tracking.</figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="group-waste-robot.jpg" alt="Autonomous waste collection robot on a test mat"></div>
+            <figcaption>Autonomous waste collection and disposal robot.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 07</span>
+        <h3>HW-Racing Experience</h3>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <p>Participated in the Heriot-Watt Formula Student team as a member of the Driver Environment department, contributing to the design of regulatory safety features within the vehicle. Gained valuable experience in high-performance automotive design, using tools like Abaqus for FEA simulation, and teamwork skills in a wider environment where communication between departments was required.</p>
+        </div>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame tall"><img src="hwracing-1.jpg" alt="Aluminium headrest backplate with hexagonal cut-outs"></div>
+            <div class="frame tall contain"><img src="hwracing-2.jpg" alt="FEA simulation of the headrest backplate"></div>
+          </div>
+          <figcaption>Aluminium headrest backplate.</figcaption>
+        </figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="hobbies">
+  <div class="wrap">
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Sheet 08</span>
+        <h3>Hobbies &amp; Personal Interests</h3>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <p>Outside of university projects, I spend a lot of my time working on personal hardware and technology-based hobbies. 3D printing has been one of my longest-running interests, allowing me to design, prototype, and improve custom parts for practical problems, from desk accessories to day-to-day modifications and experimental mechanisms.</p>
+          <p>I am also very interested in the PC and peripherals world, including building custom PCs, keyboards, mice, and hardware setups with a focus on performance, aesthetics, and usability. These hobbies have helped me develop a hands-on approach to problem-solving while continuously improving my design, assembly, troubleshooting, and product design skills.</p>
+        </div>
+        <div class="figs">
+          <figure>
+            <div class="fig-row">
+              <div class="frame square"><img src="hobby-scan-1.jpg" alt="Plasticine model on a turntable for 3D scanning"></div>
+              <div class="frame square"><img src="hobby-scan-2.jpg" alt="Headphone stand made from the scanned model"></div>
+            </div>
+            <figcaption>Attempt to design a model using plasticine and 3D scanning.</figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="hobby-sim-wheel.jpg" alt="3D printed race sim wheel and shifter"></div>
+            <figcaption>3D printed race sim wheel and shifter.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="sub">
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame square"><img src="hobby-pc-1.jpg" alt="High end Mini-ITX PC build"></div>
+            <div class="frame square"><img src="hobby-pc-2.jpg" alt="Budget ATX PC build"></div>
+          </div>
+          <figcaption>High-end Mini-ITX and budget ATX PC build.</figcaption>
+        </figure>
+        <figure class="figs">
+          <div class="fig-row">
+            <div class="frame square"><img src="hobby-mice-1.jpg" alt="Carbon composite fingertip mouse iteration"></div>
+            <div class="frame square"><img src="hobby-mice-2.jpg" alt="Ultra-light fingertip mouse on a scale"></div>
+          </div>
+          <figcaption>Ultra-light carbon composite fingertip mice iterations.</figcaption>
+        </figure>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <h4>In the works…</h4>
+          <p>I am currently developing a 6-DoF CAD navigation “mouse” designed to make 3D modelling more efficient and intuitive. The project began with a proof-of-concept prototype using joystick modules, which successfully allowed me to control and display object rotation across three axes in Fusion 360. I am using an ESP32-S3 development board because of its USB capabilities, with the intention of later compressing the electronics into a smaller form factor using a compact S3 board. At this stage, I have focused on refining the mechanical feel of the spring-suspended central knob, including its ergonomic response, movement limits, and magnet positioning. The next stage is to integrate Hall effect sensors, allowing the ESP32-S3 to read the knob’s relative position from each sensor and translate it into six degrees of freedom: three axes of rotation and three axes of translation for CAD software control.</p>
+        </div>
+        <div class="figs fig-row">
+          <figure>
+            <div class="frame square"><img src="wip-1.jpg" alt="Yellow 3D-printed spring suspension test pieces"></div>
+            <figcaption>Testing spring suspension techniques.</figcaption>
+          </figure>
+          <figure>
+            <div class="frame square"><img src="wip-2.jpg" alt="Proof-of-concept input tester built with joystick modules"></div>
+            <figcaption>Proof-of-concept rotation-axis input tester made with joystick modules.</figcaption>
+          </figure>
+          <figure>
+            <div class="frame square"><img src="wip-3.jpg" alt="Finalised spring structure of the knob"></div>
+            <figcaption>Finalised mechanical spring structure with rotation and travel range limits implemented.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="final-thoughts" class="closing">
+  <div class="wrap">
+    <article class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-no">Notes</span>
+        <h3>Final Thoughts</h3>
+      </div>
+      <div class="sub">
+        <div class="text">
+          <p>Working on these projects has been a huge part of my growth as an engineer. Whether it was figuring out how to get a 3D-printed gearbox to move smoothly or trying (and failing) to keep a flight controller from catching fire, each challenge taught me something valuable, not just technically, but also in how I approach problems.</p>
+          <p>I love designing and building things that work well, but I also enjoy the process of trial, error, and iteration that gets them there. These projects are just a snapshot of the things I’ve explored so far, and I’m excited to keep learning, improving, and taking on even more ambitious ideas in the future.</p>
+          <p>Thanks for taking the time to check out my work!</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>Andrés Bancalari-Ruiz</span>
+    <a href="https://www.linkedin.com/in/andr%C3%A9s-bancalari-ruiz-695432310/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
